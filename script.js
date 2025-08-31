@@ -18,7 +18,7 @@ function searchBorrower(){
   );
 
   if(matches.length === 0){
-    resultDiv.innerHTML = `<p class="text-gray-600 dark:text-gray-300">No records found for this borrower.</p>`;
+    resultDiv.innerHTML = `<p class="text-gray-600 dark:text-gray-300">No records found for this Student.</p>`;
     return;
   }
 
@@ -26,16 +26,16 @@ function searchBorrower(){
   matches.forEach(b => totalFine += calcFine(b.dueDate));
 
   let html = `
-    <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Borrower: ${matches[0].borrower}</h3>
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Student ID : ${matches[0].borrower}</h3>
     <p class="text-gray-600 dark:text-gray-300">Books Issued: ${matches.length}</p>
     <p class="text-gray-600 dark:text-gray-300">Total Fine: ₹${totalFine}</p>
     <div class="overflow-x-auto">
       <table class="min-w-full mt-3 border border-gray-300 dark:border-gray-700 text-sm">
         <thead class="bg-gray-100 dark:bg-gray-700">
           <tr>
-            <th class="px-3 py-2 text-left">Title</th>
-            <th class="px-3 py-2">Due Date</th>
-            <th class="px-3 py-2">Fine</th>
+            <th class="px-3 py-2 text-left dark:text-white">Title</th>
+            <th class="px-3 py-2 dark:text-white">Due Date</th>
+            <th class="px-3 py-2 dark:text-white">Fine</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -44,9 +44,9 @@ function searchBorrower(){
   matches.forEach(b=>{
     html += `
       <tr>
-        <td class="px-3 py-2">${b.title}</td>
-        <td class="px-3 py-2">${isoToDisplay(b.dueDate)}</td>
-        <td class="px-3 py-2">₹${calcFine(b.dueDate)}</td>
+        <td class="px-3 py-2 dark:text-white">${b.title}</td>
+        <td class="px-3 py-2 dark:text-white">${isoToDisplay(b.dueDate)}</td>
+        <td class="px-3 py-2 dark:text-white">₹${calcFine(b.dueDate)}</td>
       </tr>`;
   });
 
